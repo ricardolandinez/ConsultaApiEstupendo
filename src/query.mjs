@@ -3,19 +3,23 @@
 const cufes = [
     {
         $match: {
-                numeral: "CR1488",
-                created_at: { 
-                $gte: new Date("2024-03-01T00:00:00-05:00"), 
-                $lte: new Date("2024-03-12T23:59:59-05:00") }
+       //   receptor_id:"5dc19bbb745ded0e54558bf8",
+            formaPago: "2",
+            tipo_documento: "01",
+            estado: { $ne: 5 },
+            created_at: {
+
+                $gte: new Date("2024-03-01T00:00:00-05:00"),
+                $lte: new Date("2024-03-16T23:59:59-05:00")
             }
-        
+        }
+
     },
-    { $limit: 3 },
     {
         $project: {
             CUFE: "$cufe",
             Documento: "$numeral",
-            _id: 0
+            _id: 1
 
         }
     }
@@ -23,4 +27,4 @@ const cufes = [
 ]
 
 
-export {cufes}
+export { cufes }
